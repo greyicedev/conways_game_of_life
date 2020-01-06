@@ -4,4 +4,4 @@ python3 game_of_life.py
 
 Optionally a grid size can be passed at the command line:
 
-python3 game_of_life.py grid_size 
+python3 game_of_life.py 200 
