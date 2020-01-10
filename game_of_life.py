@@ -9,22 +9,22 @@ def init_grid(size):
         grid.append([0 for i in range(0,size)])
     return grid
 
-def random_grid():
+def random_grid(gr):
 
-    for i in range(0,len(grid)):
-        for j in range(0, len(grid)):
-            grid[j][i] = random.randint(0,1)
+    for i in range(0,len(gr)):
+        for j in range(0, len(gr)):
+            gr[j][i] = random.randint(0,1)
 
-def populate_glider():
+def populate_glider(gr):
     
     x = int(size/2)
     y = int(size/2)
     
-    grid[x + 1][y] = 1
-    grid[x][y - 1] = 1
-    grid[x][y + 1] = 1
-    grid[x - 1][y + 1] = 1
-    grid[x + 1][y + 1]  = 1
+    gr[x + 1][y] = 1
+    gr[x][y - 1] = 1
+    gr[x][y + 1] = 1
+    gr[x - 1][y + 1] = 1
+    gr[x + 1][y + 1]  = 1
     
 def calculate_neighbors(g, size, x, y):
 
@@ -78,11 +78,15 @@ def draw_grid(dt):
     
 if __name__ == "__main__":
 
-    size = int(sys.argv[1])
+    if len(sys.argv) == 2:
+        size = int(sys.argv[1])
+    else:
+        size = 100
+
     cell_size = 4
 
     grid = init_grid(size)
-    random_grid()
+    random_grid(grid)
 
     window = pyglet.window.Window(width=size * cell_size,height=size * cell_size)
 
